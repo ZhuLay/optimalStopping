@@ -36,6 +36,11 @@ function send(){
 	var temp3 = 1 / (1-first);
 	var result = Math.pow(temp1/temp2,temp3);
 	resultDiv.value = Math.round(result*100);
+	
+	
+	document.getElementById("analysisDiv").setAttribute("style","");
+	document.getElementById("resultFont1").innerHTML = resultDiv.value + "%";
+	document.getElementById("resultFont2").innerHTML = resultDiv.value + "%";
 }
 function checkNum(first,back){
 	var errorMsg = "";
@@ -51,6 +56,9 @@ function checkNum(first,back){
 	}
 	if (back >= first){
 		errorMsg += "回頭成功率 不可以 >= 第一次成功率 喔～\n";
+	}
+	if (first - back < 0.1){
+		errorMsg += "第一次成功率 要比 回頭成功率 多10% 喔～\n";
 	}
 	
 	if (errorMsg != ""){
@@ -81,7 +89,7 @@ function checkNum(first,back){
 </div>
 
 <div>
-	<span style="color:red">注意：第一次成功機率一定要大於回頭成功機率</span>
+	<span style="color:red">注意：1. 第一次成功機率 一定要大於 回頭成功機率<br>　　　2. 兩者至少相差10%</span>
 </div>
 
 <hr>
@@ -94,7 +102,13 @@ function checkNum(first,back){
 	<span>%</span>
 </div>
 
-
+<div id="analysisDiv" style="display:none;">
+	<span>分析：演算法告訴你，應該在總數量的<b><font id="resultFont1" color="red"></font></b>之後開始，遇到比前面還要好的選擇時，選擇他！</span>
+	<br>
+	<span>　　　如此一來，你選到最好選項的機率是<b><font id="resultFont2" color="red"></font></b>！</span>
+	
+</div>
+<div style="position:fixed;bottom:1%;right:1%;background-color:steelblue;">This page created by 拉毛 (2018-03-03)</div>
 </body>
 
 
