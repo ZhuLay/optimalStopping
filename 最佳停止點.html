@@ -1,0 +1,101 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<title>最佳停止點</title>
+</head>
+<style>
+body{
+	font-size:150%;
+	font-family:Microsoft JhengHei,Arial,serif;
+}
+input{
+	font-size:130%;
+}
+button{
+	font-size:130%;
+}
+</style>
+
+<script>
+function send(){
+	var resultDiv = document.getElementById("result");
+	resultDiv.value = "";
+	var first = document.getElementById("first").value / 100;
+	var back = document.getElementById("back").value / 100;
+	if (first == 1){
+		first = 0.999;
+	}
+	if( !checkNum(first,back) ){
+		return;
+	}
+	var temp1 = Math.pow(first,2);
+	var temp2 = first - ( back*(1 - first) );
+	var temp3 = 1 / (1-first);
+	var result = Math.pow(temp1/temp2,temp3);
+	resultDiv.value = Math.round(result*100);
+}
+function checkNum(first,back){
+	var errorMsg = "";
+	if (first == 1){
+		first = 0.999;
+	}else if (first > 1){
+		errorMsg += "第一次成功率 請輸入正確的百分比\n";
+	}else if (first == 0){
+		errorMsg += "第一次成功率 不可為0\n";
+	}
+	if (back > 1){
+		errorMsg += "回頭成功率 請輸入正確的百分比\n";
+	}
+	if (back >= first){
+		errorMsg += "回頭成功率 不可以 >= 第一次成功率 喔～\n";
+	}
+	
+	if (errorMsg != ""){
+		alert(errorMsg);
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>
+
+<body style="margin:1%">
+
+
+<h1><b>前人種樹，後人乘涼</b></h1>
+<h2><i>前人的智慧－最佳停止點演算法</i></h2>
+<hr>
+<div>
+	<span>第一次選擇的成功率</span>
+	<input type="text" id="first" maxlength="3" size="3" value="100">
+	<span>%</span>
+</div>
+
+<div>
+	<span>回頭選擇的成功機率</span>
+	<input type="text" id="back" maxlength="3" size="3" value="0">
+	<span>%</span>
+</div>
+
+<div>
+	<span style="color:red">注意：第一次成功機率一定要大於回頭成功機率</span>
+</div>
+
+<hr>
+
+<a href="#" class="btn-lg btn-success" onClick="send()">計算</a>
+
+<br><br>
+<div>
+	<input type="text" id="result" maxlength="3" size="3" disabled style="font-size:250%;">
+	<span>%</span>
+</div>
+
+
+</body>
+
+
+</html>
