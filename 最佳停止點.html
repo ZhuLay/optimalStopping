@@ -39,7 +39,7 @@ function send(){
 	
 	
 	document.getElementById("analysisDiv").setAttribute("style","");
-	document.getElementById("resultFont1").innerHTML = resultDiv.value + "%";
+	document.getElementById("resultFont1").innerHTML = resultDiv.value + "個";
 	document.getElementById("resultFont2").innerHTML = resultDiv.value + "%";
 }
 function checkNum(first,back){
@@ -100,9 +100,9 @@ function checkNum(first,back){
 </div>
 
 <div id="analysisDiv" style="display:none;">
-	<span>分析：演算法告訴你，應該在總數量的<b><font id="resultFont1" color="red"></font></b>之後開始，遇到比前面還要好的選擇時，選擇他！</span>
+	<span>分析：演算法告訴你，假設你鎖定了100個女森要找1個當女朋友，你應該從第<b><font id="resultFont1" color="red"></font></b>之後開始，遇到比前面還要好的女森時，選擇他！</span>
 	<br>
-	<span>　　　如此一來，你選到最好選項的機率是<b><font id="resultFont2" color="red"></font></b>！</span>
+	<span>　　　如此一來，你從100個女森中選到最U質的機率是<b><font id="resultFont2" color="red"></font></b>！</span>
 	
 </div>
 <div style="position:fixed;bottom:1%;right:1%;background-color:steelblue;">演算法參考：Petruccelli, "Best-Choice Problems Involving Uncertainty".<br>This page created by 拉毛 (2018-03-03)</div>
