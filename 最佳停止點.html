@@ -4,6 +4,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="Algorithm.js" language=JavaScript></script>
 <title>最佳停止點</title>
 </head>
 <style>
@@ -19,56 +20,6 @@ button{
 }
 </style>
 
-<script>
-function send(){
-	var resultDiv = document.getElementById("result");
-	resultDiv.value = "";
-	var first = document.getElementById("first").value / 100;
-	var back = document.getElementById("back").value / 100;
-	if (first == 1){
-		first = 0.999;
-	}
-	if( !checkNum(first,back) ){
-		return;
-	}
-	var temp1 = Math.pow(first,2);
-	var temp2 = first - ( back*(1 - first) );
-	var temp3 = 1 / (1-first);
-	var result = Math.pow(temp1/temp2,temp3);
-	resultDiv.value = Math.round(result*100);
-	
-	
-	document.getElementById("analysisDiv").setAttribute("style","");
-	document.getElementById("resultFont1").innerHTML = resultDiv.value + "個";
-	document.getElementById("resultFont2").innerHTML = resultDiv.value + "%";
-}
-function checkNum(first,back){
-	var errorMsg = "";
-	if (first == 1){
-		first = 0.999;
-	}else if (first > 1){
-		errorMsg += "第一次成功率 請輸入正確的百分比\n";
-	}else if (first == 0){
-		errorMsg += "第一次成功率 不可為0\n";
-	}
-	if (back > 1){
-		errorMsg += "回頭成功率 請輸入正確的百分比\n";
-	}
-	if (back >= first){
-		errorMsg += "回頭成功率 不可以 >= 第一次成功率 喔～\n";
-	}
-	if (first - back < 0.1){
-		errorMsg += "第一次成功率 要比 回頭成功率 多10% 喔～\n";
-	}
-	
-	if (errorMsg != ""){
-		alert(errorMsg);
-		return false;
-	}else{
-		return true;
-	}
-}
-</script>
 
 <body style="margin:1%">
 <h1><b>最佳停止點(37%法則)</b></h1>
