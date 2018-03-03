@@ -11,6 +11,11 @@
 body{
 	font-size:150%;
 	font-family:Microsoft JhengHei,Arial,serif;
+	background-image: url(background.jpg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
 }
 input{
 	font-size:130%;
@@ -25,15 +30,15 @@ button{
 <h1><b>最佳停止點(37%法則)</b></h1>
 <hr>
 <div>
-	<span>第一次選擇的成功率</span>
+	<span>第一次選擇的成功接受率</span>
 	<input type="text" id="first" maxlength="3" size="3" value="100">
 	<span>%</span>
 </div>
 
 <div>
-	<span>回頭選擇的成功機率</span>
+	<span>回頭選擇的成功接受機率</span>
 	<input type="text" id="back" maxlength="3" size="3" value="0">
-	<span>%</span>
+	<span>%　　(0%表示不能回頭)</span>
 </div>
 
 <div>
@@ -42,7 +47,7 @@ button{
 
 <hr>
 
-<a href="#" class="btn-lg btn-success" onClick="send()">計算</a>
+<a href="#" class="btn-lg btn-success" onClick="send()" style="font-size:150%;">計算</a>
 
 <br><br>
 <div>

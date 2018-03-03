@@ -35,7 +35,7 @@ function checkNum(first,back){
 	if (back >= first){
 		errorMsg += "回頭成功率 不可以 >= 第一次成功率 喔～\n";
 	}
-	if (first - back < 0.1){
+	if ((first-back) < 0.099){
 		errorMsg += "第一次成功率 要比 回頭成功率 多10% 喔～\n";
 	}
 	
